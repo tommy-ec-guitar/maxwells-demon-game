@@ -1,4 +1,8 @@
 % main
+%%%
+% Press `s` key to open and close the door.
+% That's all.
+%%%
 
 %%%
 % Set Parameters
