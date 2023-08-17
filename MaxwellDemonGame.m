@@ -45,7 +45,6 @@ classdef MaxwellDemonGame < handle
         function figureCallBack(obj,~,event)
             if event.Character == "s"
                 obj.lBox.DoorSwitch();
-                obj.doorPlot.Visible = ~obj.doorPlot.Visible;
             end
         end
 
@@ -72,12 +71,16 @@ classdef MaxwellDemonGame < handle
 
             while obj.figStatus && ~obj.gameStatus
                 preTime = cputime;
+                obj.doorPlot.Visible = ~obj.lBox.isOpenDoor;
                 obj.lParticle.bound(obj.lBox, dt);
                 obj.pScatter.XData = obj.lParticle.position(:,1);
                 obj.pScatter.YData = obj.lParticle.position(:,2);
                 drawnow
                 % 判定
                 obj.judge();
+
+                % Demon(obj.lBox,obj.lParticle);
+
                 dt = cputime - preTime;
             end
             
